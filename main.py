@@ -95,12 +95,12 @@ def generate_documents_from_responses(questions):
         A list of Haystack Documents.
     """
     documents = []
-    for i, question in enumerate(questions):
-        question['meta'] = {
+    for question in questions:
+        nmeta = {
             'trait': question.trait,
             'answer': question.answer
         }
-        documents.append(Document(content=question["text"], meta=question["meta"]))
+        documents.append(Document(content=question.text, meta=nmeta))
 
     return documents
 
@@ -113,14 +113,14 @@ def index():
 @app.post('/result',status_code=200)
 def qoa(questions:List[SingleQuestion]):
     total_question = len(questions)
-    try:
-        #mbti_type_classic = classic_mbti_weighted(responses)
-        pipeline = llm_pipeline(api_key)
-        documents = generate_documents_from_responses(questions)
-        query = "Baseret på svarene, hvad er denne brugers Myers-Briggs personlighedstype?"
-        answer = pipeline.run(data={'splitter': {'documents': documents}, "prompt_builder": {"query": query}})
-        mbti_type_llm = answer['llm']['replies'][0]
-        return mbti_type_llm
-    except ValueError as e:
-        return str(e)
+    
+    #mbti_type_classic = classic_mbti_weighted(responses)
+    pipeline = llm_pipeline(api_key)
+    # return {'linke':119,'total_question':total_question, 'api_key':api_key}
+    documents = generate_documents_from_responses(questions)
+    query = "Baseret på svarene, hvad er denne brugers Myers-Briggs personlighedstype?"
+    answer = pipeline.run(data={'splitter': {'documents': documents}, "prompt_builder": {"query": query}})
+    mbti_type_llm = answer['llm']['replies'][0]
+    return mbti_type_llm
+
     #response from openai
