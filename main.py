@@ -4,15 +4,17 @@ from typing import List, Literal
 from haystack import Pipeline
 from haystack.components.preprocessors import DocumentSplitter
 from haystack.components.builders.prompt_builder import PromptBuilder
+from haystack.utils import Secret
 from haystack.components.generators import OpenAIGenerator
 from haystack import Document
-import openai
 import os 
 from dotenv import load_dotenv 
 
 #env file load
 load_dotenv()
-api_key = os.getenv('OPENAI_API_KEY')
+openai_api_key = os.getenv('OPENAI_API_KEY')
+openai_api_key = Secret.from_token(openai_api_key)
+
 #Pattern of a question
 class SingleQuestion(BaseModel):
     text: str 
@@ -65,7 +67,7 @@ def llm_pipeline(api_key):
     """
     splitter = DocumentSplitter(split_length=100, split_overlap=5)
     prompt_builder = PromptBuilder(prompt_template)
-    llm = OpenAIGenerator(api_key=api_key, 
+    llm = OpenAIGenerator(api_key=openai_api_key, 
                           model='gpt-4o',
                           generation_kwargs={"temperature":0.1})
 
@@ -115,7 +117,7 @@ def qoa(questions:List[SingleQuestion]):
     total_question = len(questions)
     
     #mbti_type_classic = classic_mbti_weighted(responses)
-    pipeline = llm_pipeline(api_key)
+    pipeline = llm_pipeline(openai_api_key)
     # return {'linke':119,'total_question':total_question, 'api_key':api_key}
     documents = generate_documents_from_responses(questions)
     query = "Baseret på svarene, hvad er denne brugers Myers-Briggs personlighedstype?"

@@ -1,19 +1,14 @@
 # Web framework
-fastapi
-pydantic
-uvicorn
+fastapi==0.115.11
+pydantic==2.10.6
+uvicorn==0.34.0
 
 # AI/ML libraries
-openai
-haystack-ai
-sentence-transformers
+haystack-ai==2.7.0
 
 # PyTorch with CPU support
---extra-index-url https://download.pytorch.org/whl/cpu
-torch
-torchvision
+torch==2.6.0
+torchvision==0.21.0
 
 # Utilities
-python-dotenv
-moviepy
-pydub
+python-dotenv==1.0.1
