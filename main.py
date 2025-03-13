@@ -9,6 +9,7 @@ from haystack.components.generators import OpenAIGenerator
 from haystack import Document
 import os 
 from dotenv import load_dotenv 
+import json
 
 #env file load
 load_dotenv()
@@ -54,10 +55,31 @@ def llm_pipeline(api_key):
     F = Feeling
     J = Judging
     P = Perceiving
+
     Giv en title på personlighedstypen baseret på MBTI og hvilken rolle de passer til.
-    I din beskrivelse nævn de definerende karakteristika for personlighedstypen med max 100 ord
-    Giv også en procentfordeling af personlighedstræk, som sætter dem i kasser for [Extraversion og Introversion], [Sensing og Intuition], [Thinking og Feeling], og [Judging og Perceiving]. Linjeskift for hver personlighedstræk.
+    I din beskrivelse nævn de definerende karakteristika for personlighedstypen med max 100 ord.
+    Giv også en procentfordeling af personlighedstræk, som sætter dem i kasser for [Extraversion og Introversion], [Sensing og Intuition], [Thinking og Feeling], og [Judging og Perceiving]. Linjeskift for hver personligheidstræk.
     Til sidst skal du sætte i punkter hvilke 4 styrker og 4 svagheder personlighedstypen har.
+
+    **Return the response in the following JSON format with English keys and Danish values:**
+    {
+        "title": "[MBTI type], også kendt som '[Nickname]'",
+        "summary": "Ifølge FlexTemps personlighedstest, er du: [MBTI type]",
+        "description": "[Beskrivelse af personlighedstypen]",
+        "percentage_distribution": {
+            "Extraversion": X,
+            "Introversion": Y,
+            "Sensing": X,
+            "Intuition": Y,
+            "Thinking": X,
+            "Feeling": Y,
+            "Judging": X,
+            "Perceiving": Y
+        },
+        "strengths": ["[Stærke egenskaber 1]", "[Stærke egenskaber 2]", "[Stærke egenskaber 3]", "[Stærke egenskaber 4]"],
+        "weaknesses": ["[Svage egenskaber 1]", "[Svage egenskaber 2]", "[Svage egenskaber 3]", "[Svage egenskaber 4]"]
+    }
+
     Context:
     {% for doc in documents %}
         Question: {{ doc.content }} Response: {{ doc.meta['answer'] }} Personality trait: {{doc.meta['trait']}} \n
@@ -116,13 +138,24 @@ def index():
 def qoa(questions:List[SingleQuestion]):
     total_question = len(questions)
     
-    #mbti_type_classic = classic_mbti_weighted(responses)
     pipeline = llm_pipeline(openai_api_key)
-    # return {'linke':119,'total_question':total_question, 'api_key':api_key}
     documents = generate_documents_from_responses(questions)
     query = "Baseret på svarene, hvad er denne brugers Myers-Briggs personlighedstype?"
     answer = pipeline.run(data={'splitter': {'documents': documents}, "prompt_builder": {"query": query}})
     mbti_type_llm = answer['llm']['replies'][0]
-    return mbti_type_llm
+    
+    # Step 1: Remove the markdown code block
+    cleaned_response = mbti_type_llm.strip().replace("```json\n", "").replace("```", "")
+    
+    # Step 2: Parse the JSON string into a Python dictionary
+    response_json = json.loads(cleaned_response)
+    
+    # Step 3: Split the title into title and nickname
+    title_parts = response_json["title"].split(", også kendt som '")
+    response_json["title"] = title_parts[0]  # MBTI type (e.g., "ENFJ")
+    response_json["nickname"] = title_parts[1].rstrip("'")  # Nickname (e.g., "The Protagonist")
+    
+    # Return the updated JSON response
+    return response_json
 
     #response from openai
