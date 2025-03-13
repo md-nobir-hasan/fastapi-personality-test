@@ -1,14 +1,24 @@
 # Web framework
-fastapi==0.115.11
-pydantic==2.10.6
-uvicorn==0.34.0
+fastapi
+#fastapi==0.115.11
+
+pydantic
+#pydantic==2.10.6
+
+uvicorn
+#uvicorn==0.34.0
 
 # AI/ML libraries
-haystack-ai==2.7.0
+haystack-ai
+#haystack-ai==2.7.0
 
 # PyTorch with CPU support
-torch==2.6.0
-torchvision==0.21.0
+torch
+#torch==2.6.0
+
+torchvision
+#torchvision==0.21.0
 
 # Utilities
-python-dotenv==1.0.1
+python-dotenv
+#python-dotenv==1.0.1
