@@ -22,3 +22,8 @@ torchvision
 # Utilities
 python-dotenv
 #python-dotenv==1.0.1
+
+# Google Drive API
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
