@@ -329,8 +329,22 @@ def upload_to_drive_sync(filename):
     dict: Information about the upload result
     """
     try:
-        # Path to your service account key file
-        service_account_file = 'arched-pier-454009-r8-82a8a7a8cd08.json'
+        # Try multiple possible locations for the service account file
+        service_account_file = None
+        possible_locations = [
+            'arched-pier-454009-r8-82a8a7a8cd08.json',  # Current directory
+            '/etc/secrets/arched-pier-454009-r8-82a8a7a8cd08.json',  # Secret files location
+            os.path.join(os.path.dirname(__file__), 'arched-pier-454009-r8-82a8a7a8cd08.json')  # App root
+        ]
+        
+        for location in possible_locations:
+            if os.path.exists(location):
+                service_account_file = location
+                print(f"Found service account file at: {location}")
+                break
+                
+        if not service_account_file:
+            raise FileNotFoundError("Could not find service account JSON file in any of the expected locations")
         
         # Define the scopes
         SCOPES = ['https://www.googleapis.com/auth/drive']
