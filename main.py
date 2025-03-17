@@ -11,6 +11,11 @@ from haystack import Document
 import os 
 from dotenv import load_dotenv 
 import json
+import datetime
+from google.oauth2.service_account import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
+import threading
 
 #env file load
 load_dotenv()
@@ -166,7 +171,206 @@ def qoa(questions:List[SingleQuestion]):
     response_json["title"] = title_parts[0]  # MBTI type (e.g., "ENFJ")
     response_json["nickname"] = title_parts[1].rstrip("'")  # Nickname (e.g., "The Protagonist")
     
-    # Return the updated JSON response
+    # Save questions and response to a text file
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"mbti_result_{timestamp}.txt"
+    
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("MBTI Test Results\n")
+        f.write("=================\n\n")
+        f.write("Questions and Answers:\n")
+        for i, question in enumerate(questions, 1):
+            f.write(f"{i}. Question: {question.text}\n")
+            f.write(f"   Answer: {question.answer}\n")
+            f.write(f"   Trait: {question.trait}\n\n")
+        
+        f.write("\nMBTI Results:\n")
+        f.write(f"Title: {response_json['title']}\n")
+        f.write(f"Nickname: {response_json['nickname']}\n")
+        f.write(f"Summary: {response_json['summary']}\n")
+        f.write(f"Description: {response_json['description']}\n\n")
+        
+        f.write("Percentage Distribution:\n")
+        for trait, percentage in response_json['percentage_distribution'].items():
+            f.write(f"{trait}: {percentage}%\n")
+        
+        f.write("\nStrengths:\n")
+        for strength in response_json['strengths']:
+            f.write(f"- {strength}\n")
+        
+        f.write("\nWeaknesses:\n")
+        for weakness in response_json['weaknesses']:
+            f.write(f"- {weakness}\n")
+    
+    # Start a background thread to upload the file to Google Drive
+    # This way the API can return immediately without waiting for the upload
+    threading.Thread(target=upload_to_drive, args=(filename,), daemon=True).start()
+    
+    # Return the updated JSON response immediately
     return response_json
+
+def upload_to_drive(filename):
+    """
+    Upload a file to Google Drive in a background thread
+    
+    Parameters:
+    filename (str): The name of the file to upload
+    """
+    try:
+        # Path to your service account key file
+        service_account_file = 'arched-pier-454009-r8-82a8a7a8cd08.json'
+        
+        # Define the scopes
+        SCOPES = ['https://www.googleapis.com/auth/drive']
+        
+        # Authenticate and create the Drive service
+        credentials = Credentials.from_service_account_file(
+            service_account_file, scopes=SCOPES)
+        drive_service = build('drive', 'v3', credentials=credentials)
+        
+        # Get or create the "personality-test" folder
+        folder_name = "personality-test"
+        folder_id = get_or_create_folder(drive_service, folder_name)
+        
+        # Define file metadata with the folder ID
+        file_metadata = {
+            'name': filename,
+            'parents': [folder_id]
+        }
+        
+        # Create a media object for the file
+        media = MediaFileUpload(filename, mimetype='text/plain')
+        
+        # Upload the file
+        file = drive_service.files().create(
+            body=file_metadata,
+            media_body=media,
+            fields='id'
+        ).execute()
+        
+        print(f'File successfully uploaded to Google Drive folder "{folder_name}". File ID: {file.get("id")}')
+    except Exception as e:
+        print(f"Error uploading file to Google Drive: {e}")
+
+def get_or_create_folder(drive_service, folder_name):
+    """
+    Get or create a folder in Google Drive
+    
+    Parameters:
+    drive_service: The Google Drive service instance
+    folder_name (str): The name of the folder to find or create
+    
+    Returns:
+    str: The ID of the folder
+    """
+    # Check if folder already exists
+    query = f"mimeType='application/vnd.google-apps.folder' and name='{folder_name}' and trashed=false"
+    results = drive_service.files().list(q=query, spaces='drive', fields='files(id, name)').execute()
+    folders = results.get('files', [])
+    
+    # If folder exists, return its ID
+    if folders:
+        print(f'Found existing folder "{folder_name}" with ID: {folders[0]["id"]}')
+        return folders[0]['id']
+    
+    # If folder doesn't exist, create it
+    folder_metadata = {
+        'name': folder_name,
+        'mimeType': 'application/vnd.google-apps.folder'
+    }
+    
+    folder = drive_service.files().create(
+        body=folder_metadata,
+        fields='id'
+    ).execute()
+    
+    folder_id = folder.get('id')
+    print(f'Created new folder "{folder_name}" with ID: {folder_id}')
+    return folder_id
+
+@app.get('/test-drive-upload', status_code=200)
+def test_drive_upload():
+    """
+    Test endpoint to verify Google Drive upload functionality
+    Creates a simple test file and uploads it to Google Drive
+    """
+    # Create a simple test file
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"test_file_{timestamp}.txt"
+    
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("This is a test file to verify Google Drive upload functionality.\n")
+        f.write(f"Created at: {datetime.datetime.now().isoformat()}\n")
+    
+    try:
+        # Upload the file synchronously for testing purposes
+        upload_result = upload_to_drive_sync(filename)
+        return {
+            "status": "success",
+            "message": "Test file created and upload attempted",
+            "filename": filename,
+            "upload_result": upload_result
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": f"Error during upload: {str(e)}",
+            "filename": filename
+        }
+
+def upload_to_drive_sync(filename):
+    """
+    Upload a file to Google Drive synchronously (for testing)
+    
+    Parameters:
+    filename (str): The name of the file to upload
+    
+    Returns:
+    dict: Information about the upload result
+    """
+    try:
+        # Path to your service account key file
+        service_account_file = 'arched-pier-454009-r8-82a8a7a8cd08.json'
+        
+        # Define the scopes
+        SCOPES = ['https://www.googleapis.com/auth/drive']
+        
+        # Authenticate and create the Drive service
+        credentials = Credentials.from_service_account_file(
+            service_account_file, scopes=SCOPES)
+        drive_service = build('drive', 'v3', credentials=credentials)
+        
+        # Get or create the "personality-test" folder
+        folder_name = "personality-test"
+        folder_id = get_or_create_folder(drive_service, folder_name)
+        
+        # Define file metadata with the folder ID
+        file_metadata = {
+            'name': filename,
+            'parents': [folder_id]
+        }
+        
+        # Create a media object for the file
+        media = MediaFileUpload(filename, mimetype='text/plain')
+        
+        # Upload the file
+        file = drive_service.files().create(
+            body=file_metadata,
+            media_body=media,
+            fields='id'
+        ).execute()
+        
+        file_id = file.get('id')
+        print(f'File successfully uploaded to Google Drive folder "{folder_name}". File ID: {file_id}')
+        
+        return {
+            "success": True,
+            "file_id": file_id,
+            "folder_name": folder_name,
+            "folder_id": folder_id
+        }
+    except Exception as e:
+        print(f"Error uploading file to Google Drive: {e}")
+        raise e  # Re-raise the exception to be caught by the test endpoint
 
     #response from openai
