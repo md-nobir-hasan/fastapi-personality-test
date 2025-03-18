@@ -185,8 +185,8 @@ def qoa(questions:List[SingleQuestion]):
             f.write(f"   Trait: {question.trait}\n\n")
         
         f.write("\nMBTI Results:\n")
+        f.write(f"Acronym: {response_json['acronym']}\n")
         f.write(f"Title: {response_json['title']}\n")
-        f.write(f"Nickname: {response_json['nickname']}\n")
         f.write(f"Tagline: {response_json['tagline']}\n")
         f.write(f"Summary: {response_json['summary']}\n")
         f.write(f"Description: {response_json['description']}\n\n")
