@@ -69,7 +69,9 @@ def llm_pipeline(api_key):
 
     **Return the response in the following JSON format with English keys and Danish values:**
     {
-        "title": "[MBTI type], også kendt som '[Nickname]'",
+        "acronym": "[MBTI type på dansk]",
+        "title": "[Kaldenavn for denne personlighedstype på dansk]",
+        "tagline": "[En kort sætning der beskriver essensen af denne personlighedstype]",
         "summary": "Ifølge FlexTemps personlighedstest, er du: [MBTI type]",
         "description": "[Beskrivelse af personlighedstypen]",
         "percentage_distribution": {
@@ -166,10 +168,8 @@ def qoa(questions:List[SingleQuestion]):
     # Step 2: Parse the JSON string into a Python dictionary
     response_json = json.loads(cleaned_response)
     
-    # Step 3: Split the title into title and nickname
-    title_parts = response_json["title"].split(", også kendt som '")
-    response_json["title"] = title_parts[0]  # MBTI type (e.g., "ENFJ")
-    response_json["nickname"] = title_parts[1].rstrip("'")  # Nickname (e.g., "The Protagonist")
+    # No need to split the title anymore as the format has been updated in the prompt
+    # The LLM will now provide separate title and nickname fields
     
     # Save questions and response to a text file
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -187,6 +187,7 @@ def qoa(questions:List[SingleQuestion]):
         f.write("\nMBTI Results:\n")
         f.write(f"Title: {response_json['title']}\n")
         f.write(f"Nickname: {response_json['nickname']}\n")
+        f.write(f"Tagline: {response_json['tagline']}\n")
         f.write(f"Summary: {response_json['summary']}\n")
         f.write(f"Description: {response_json['description']}\n\n")
         
