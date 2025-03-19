@@ -1,0 +1,73 @@
+MBTI Test Results
+=================
+
+Questions and Answers:
+1. Question: What is the capital of France?
+   Answer: Paris
+   Trait: E
+
+2. Question: Who developed the theory of relativity?
+   Answer: Albert Einstein
+   Trait: N
+
+3. Question: What is the largest planet in our solar system?
+   Answer: Jupiter
+   Trait: J
+
+4. Question: Which element has the chemical symbol 'O'?
+   Answer: Oxygen
+   Trait: E
+
+5. Question: What is the square root of 64?
+   Answer: 8
+   Trait: P
+
+6. Question: Who wrote 'Hamlet'?
+   Answer: William Shakespeare
+   Trait: S
+
+7. Question: What is the chemical formula for water?
+   Answer: H2O
+   Trait: J
+
+8. Question: Which country is known as the Land of the Rising Sun?
+   Answer: Japan
+   Trait: E
+
+9. Question: How many continents are there on Earth?
+   Answer: 7
+   Trait: N
+
+10. Question: What is the fastest land animal?
+   Answer: Cheetah
+   Trait: S
+
+
+MBTI Results:
+Acronym: ENFJ
+Title: Læreren
+Tagline: Inspirerende ledere med en passion for at hjælpe andre.
+Summary: Ifølge FlexTemps personlighedstest, er du: ENFJ
+Description: ENFJ'er er karismatiske og empatiske ledere, der er dygtige til at motivere og inspirere andre. De er sociale, omsorgsfulde og har en stærk evne til at forstå andres følelser og behov. De trives i miljøer, hvor de kan arbejde sammen med andre for at opnå fælles mål og er ofte drevet af et ønske om at gøre en positiv forskel i verden.
+
+Percentage Distribution:
+Extraversion: 60%
+Introversion: 40%
+Sensing: 40%
+Intuition: 60%
+Thinking: 40%
+Feeling: 60%
+Judging: 60%
+Perceiving: 40%
+
+Strengths:
+- Empatisk og forstående
+- Gode kommunikationsevner
+- Inspirerende og motiverende
+- Stærk følelse af ansvar
+
+Weaknesses:
+- Kan være for idealistisk
+- Kan overse egne behov
+- Kan være for følsom over for kritik
+- Kan have svært ved at sige nej

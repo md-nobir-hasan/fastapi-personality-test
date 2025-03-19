@@ -27,6 +27,11 @@ class SingleQuestion(BaseModel):
     text: str 
     answer: str
     trait: Literal["E", "I", "S", "N", "T", "F", "J", "P"]
+class requestData(BaseModel):
+    name: str
+    email: str
+    phone: str
+    questions: List[SingleQuestion]
 
 class qoaResponse(BaseModel):
     total_question: int
@@ -153,9 +158,8 @@ def index():
     return "Welcome to Personality test API"
 
 @app.post('/result',status_code=200)
-def qoa(questions:List[SingleQuestion]):
-    total_question = len(questions)
-    
+def qoa(request:requestData):
+    questions = request.questions
     pipeline = llm_pipeline(openai_api_key)
     documents = generate_documents_from_responses(questions)
     query = "Baseret på svarene, hvad er denne brugers Myers-Briggs personlighedstype?"
