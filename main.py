@@ -74,7 +74,7 @@ def llm_pipeline(api_key):
 
     **Return the response in the following JSON format with English keys and Danish values:**
     {
-        "acronym": "[MBTI type på dansk]",
+        "mbti_type": "[MBTI type på dansk]",
         "title": "[Kaldenavn for denne personlighedstype på dansk]",
         "tagline": "[En kort sætning der beskriver essensen af denne personlighedstype]",
         "summary": "Ifølge FlexTemps personlighedstest, er du: [MBTI type]",
@@ -182,7 +182,7 @@ def qoa(request:requestData):
     with open(filename, "w", encoding="utf-8") as f:
         f.write("MBTI Test Results\n")
         f.write("=================\n\n")
-        
+
         f.write("\nPersonal Details:\n")
         f.write(f"Name: {request.name}\n")
         f.write(f"Email: {request.email}\n")
@@ -195,7 +195,7 @@ def qoa(request:requestData):
             f.write(f"   Trait: {question.trait}\n\n")
         
         f.write("\nMBTI Results:\n")
-        f.write(f"Acronym: {response_json['acronym']}\n")
+        f.write(f"MBTI Type: {response_json['mbti_type']}\n")
         f.write(f"Title: {response_json['title']}\n")
         f.write(f"Tagline: {response_json['tagline']}\n")
         f.write(f"Summary: {response_json['summary']}\n")
