@@ -182,7 +182,13 @@ def qoa(request:requestData):
     with open(filename, "w", encoding="utf-8") as f:
         f.write("MBTI Test Results\n")
         f.write("=================\n\n")
-        f.write("Questions and Answers:\n")
+        
+        f.write("\nPersonal Details:\n")
+        f.write(f"Name: {request.name}\n")
+        f.write(f"Email: {request.email}\n")
+        f.write(f"Phone: {request.phone}\n\n")
+
+        f.write("\nQuestions and Answers:\n")
         for i, question in enumerate(questions, 1):
             f.write(f"{i}. Question: {question.text}\n")
             f.write(f"   Answer: {question.answer}\n")
