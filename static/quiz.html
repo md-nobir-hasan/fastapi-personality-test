@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+  <nav class="topNav">
+    <div class="navLogo">
+      <a href="index.html" class="LogoAlter">FlexTemp</a>
+    </div>
+  </nav>
+
+    <div class="home container homeParent">
+      <div class="mcqContentMain">
+        <div class="mcqDiv">
+            <!-- Progreaa -->
+            <div class="mcqBox">
+                <div class="progressDiv text-center">
+                    <p class="progressText">Spørgsmål <span>1</span> of <span>24</span></p>
+                    <div class="progressFull">
+                        <div class="progressActive"></div>
+                    </div>
+                </div>
+    
+                <!-- MCQ Intoduction-->
+                <div class="mcqIntro my-4 my-lg-5">
+                    <h2 class="mcqTitle">1. Har du en god balance mellem arbejde og privatliv i denne virksomhed?</h2>
+                    <p class="mcqParagraph">Enhver beskrivelse relateret til spørgsmålene.</p>
+                </div>
+    
+                <!-- MCQs -->
+                <div class="mcqs">
+                    <div class="mcqSingle">
+                      <input type="radio" id="mcq1-option1" name="mcq1">
+                      <label for="mcq1-option1" class="mcqName"></label>
+                      <p class="mcqpara">Helt enig</p>
+                    </div>
+                    <div class="mcqSingle">
+                      <input type="radio" id="mcq1-option2" name="mcq1">
+                      <label for="mcq1-option2" class="mcqName"></label>
+                      <p class="mcqpara">Delvist enig</p>
+                    </div>
+                    <div class="mcqSingle">
+                      <input type="radio" id="mcq1-option3" name="mcq1">
+                      <label for="mcq1-option3" class="mcqName"></label>
+                      <p class="mcqpara">Neutral / Usikker</p>
+                    </div>
+                    <div class="mcqSingle">
+                      <input type="radio" id="mcq1-option4" name="mcq1">
+                      <label for="mcq1-option4" class="mcqName"></label>
+                      <p class="mcqpara">Delvist uenig</p>
+                    </div>
+                    <div class="mcqSingle">
+                      <input type="radio" id="mcq1-option5" name="mcq1">
+                      <label for="mcq1-option5" class="mcqName"></label>
+                      <p class="mcqpara">Helt uenig</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nextDiv">
+                <button class="leftBtn">
+                  <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" ></path></g></svg> Tilbage
+                </button>
+                <button class="nextButton">Næste <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#ffffff"></path></g></svg>
+                </button>
+            </div>
+        </div>
+        <div class="mcqBox generate loadingScreen">
+          <div class="progressDiv generate">
+              <p class="progressText">Genererer resultater...</p>
+              <img class="generateImg" src="./assets/images/Screenshot.png" alt="">
+              <div class="progressFull">
+                  <div class="progressActiveLoading"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footerData">
+          <h6 class="footerEmail">Kontakt os: <a href="mailto: kontact@flextemp.dk">kontact@flextemp.dk</a></h6>
+          <p class="footerPara">Kontakt os, hvis der opstår en fejl, eller hvis du har nogen feedback.</p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap js -->
+    <script src="./assets/js/bootstrap.min.js"></script>
+
+    <!-- custom js -->
+     <script src="./assets/js/script.js"></script>
+
+     
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+  <nav class="topNav">
+    <div class="navLogo">
+      <a href="index.html" class="LogoAlter">FlexTemp</a>
+    </div>
+  </nav>
+
+    <div class="home container homeParent">
+      <div class="homeContentMain text-center">
+        <h1 class='title'>Hej der !</h1>
+        <p class='homeParagraph'>
+          Sørg venligst for at dele dit navn, før vi begynder. Du kan også dele en e-mailadresse for yderligere opdateringer.
+        </p>
+        <form class='homeForm ' id="userForm">
+          
+          <div class="input-group name">
+            <input
+              class='homeInput'
+              type="text"
+              id="nameInput" 
+              name="name"
+              placeholder='Fulde navn'
+              required
+            />
+            <span id="nameStar" class="placeholder-star">*</span>
+            <span id="nameError" style="color: red;"></span>  
+          </div>
+
+         
+
+          <div class="input-group mobile">
+            <select id="countryCode" class="homeInput">
+                
+            </select>
+            <input
+              class='homeInput'
+              type="tel"
+              id="mobileInput" 
+              name="mobile"
+              placeholder='Telefonnummer'
+              required
+            />
+            <span id="mobileStar" class="placeholder-star">*</span>
+            <span id="mobileError" style="color: red;"></span>
+          </div>
+        
+
+          <div class="input-group email">
+            <input
+              class='homeInput'
+              type="email"
+              id="emailInput" 
+              name="email"
+              placeholder='E-mail'
+              required
+            />
+            <span id="emailStar" class="placeholder-star">*</span> 
+            <span id="emailError" style="color: red;"></span>
+          </div>
+
+         
+          <button type="submit" class='startButton'>Start Quiz</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footerData">
+          <h6 class="footerEmail">Kontakt os: <a href="mailto: kontact@flextemp.dk">kontact@flextemp.dk</a></h6>
+          <p class="footerPara">Kontakt os, hvis der opstår en fejl, eller hvis du har nogen feedback.</p>
+        </div>
+      </div>
+    </footer>
+
+    
+    <!-- Bootstrap js -->
+    <script src="./assets/js/bootstrap.min.js"></script>
+
+    <!-- custom js -->
+     <script src="./assets/js/script.js"></script>
+
+     <script>
+
+      document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Input fields
+    let nameInput = document.getElementById('nameInput');
+    let emailInput = document.getElementById('emailInput');
+    let countryCode = document.getElementById('countryCode').value; // Get selected country code
+    let mobileInput = document.getElementById('mobileInput');
+
+    // Error message fields
+    let nameError = document.getElementById('nameError');
+    let emailError = document.getElementById('emailError');
+    let mobileError = document.getElementById('mobileError');
+
+    // Reset previous error messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    mobileError.textContent = "";
+
+    // Validation Flag
+    let isValid = true;
+
+    // Name Validation
+    if (nameInput.value.trim() === "") {
+        nameError.textContent = "Name is required!";
+        isValid = false;
+    }
+
+    // Email Validation
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailInput.value.trim() === "") {
+        emailError.textContent = "Email is required!";
+        isValid = false;
+    } else if (!emailPattern.test(emailInput.value.trim())) {
+        emailError.textContent = "Enter a valid email!";
+        isValid = false;
+    }
+
+    // Mobile Validation
+    let mobilePattern = /^[0-9\-+\s]{5,15}$/;
+    if (mobileInput.value.trim() === "") {
+        mobileError.textContent = "Phone number is required!";
+        isValid = false;
+    } else if (!mobilePattern.test(mobileInput.value.trim())) {
+        mobileError.textContent = "Enter a valid phone number!";
+        isValid = false;
+    } else {
+        mobileError.textContent = "";
+    }
+
+    // If valid, save data and redirect
+    if (isValid) {
+        let userData = {
+            name: nameInput.value,
+            email: emailInput.value,
+            phone: countryCode + " " + mobileInput.value, // Combine country code & mobile number
+        };
+
+        localStorage.setItem('mcqUser', JSON.stringify(userData));
+
+        // Redirect to MCQ page
+        window.location.href = 'quiz.html';
+    }
+});
+
+
+  // Country code
+  document.addEventListener("DOMContentLoaded", function () {
+      // Fetch country codes from an API
+      fetch('https://restcountries.com/v3.1/all')
+          .then(response => response.json())
+          .then(data => {
+              const countrySelect = document.getElementById('countryCode');
+              
+              // Filter and map country data
+              let countries = data
+                  .filter(country => country.cca2 && country.idd && country.idd.root)
+                  .map(country => ({
+                      name: country.name.common,
+                      code: country.idd.root + (country.idd.suffixes ? country.idd.suffixes[0] : ''),
+                      flag: country.flags && country.flags.png ? country.flags.png : ''
+                  }));
+
+              // Sort countries alphabetically by name
+              countries.sort((a, b) => a.name.localeCompare(b.name));
+
+              // Populate dropdown
+              countries.forEach(country => {
+                  const option = document.createElement('option');
+                  option.value = country.code;
+                  option.textContent = `${country.name} (${country.code})`;
+
+                  // Default select "Dutch" country
+                  if (country.name === "Netherlands") {
+                      option.selected = true;
+                  }
+
+                  countrySelect.appendChild(option);
+              });
+          })
+          .catch(error => console.error('Error fetching country data:', error));
+  });
+
+  </script>
+  
+</body>
+</html>

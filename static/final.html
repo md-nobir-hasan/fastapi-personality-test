@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test</title>
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+
+    <!-- Font Awsome -->
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <style>
+    .percentage-distribution {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .trait-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .trait-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .trait-name {
+      width: 20%;
+      font-weight: bold;
+    }
+
+    .trait-percentage-bar {
+      width: 70%;
+      background-color: #e0e0e0;
+      border-radius: 25px;
+      overflow: hidden;
+      height: 20px;
+      position: relative;
+    }
+
+    .trait-fill {
+      height: 100%;
+      background-color: #4caf50;
+      border-radius: 25px 0 0 25px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .trait-value {
+      width: 10%;
+      text-align: right;
+    }
+
+    .percentage-table-container {
+      margin: 20px auto;
+      max-width: 500px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .percentage-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .percentage-table tr {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .percentage-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .percentage-table td {
+      padding: 8px 5px;
+    }
+
+    .trait-name {
+      font-weight: bold;
+      width: 40%;
+    }
+
+    .trait-bar {
+      width: 45%;
+      background-color: #e0e0e0;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .trait-fill {
+      height: 100%;
+      background-color: #4caf50;
+      border-radius: 6px 0 0 6px;
+    }
+
+    .trait-value {
+      width: 15%;
+      text-align: right;
+      font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    
+    <nav class="topNav">
+      <div class="navLogo">
+        <a href="index.html" class="LogoAlter">FlexTemp</a>
+      </div>
+    </nav>
+
+    <div class="home container homeParent">
+      <div class="mcqContentMain">
+        <div class="finalDiv">
+            <div class="finalText">
+                <div class="finalTextInner">
+                  <h1 class="title mb-4 mb-lg-5">Resumé</h1>
+                  <div class="secondDiv">
+                    <h2 class="second_title resultTitle">💡"Den Visionære"</h2>
+                    <h3 class="third_title resulttagline">Den Kreative Tænker</h3>
+                  </div>
+                  <div class="thirdDiv">
+                    <p class="thirdPara resultDescription">Dette kort repræsenterer personer, der ser fremtiden, før den sker. Det er de store tænkere, der altid kommer med nye ideer og unikke løsninger.</p>
+                    <ul class="thirdList resultStrengths">
+                      <li class="tListItem">Lyskæde-badgen symboliserer kreativitet og innovation, og udtrykker en følelse af fantasi og lederskab.</li>
+                      <li class="tListItem">Mens Visionære er fantastiske til at generere ideer, kan de have svært ved at eksekvere.</li>
+                      <li class="tListItem">De opfordres til at dele ideerne op i mindre, handlingsorienterede skridt for at bringe deres visioner til live.</li>
+                    </ul>
+                    <!-- <p class="thirdPara mt-4 mt-lg-5">🎙 "Du tænker ikke bare uden for boksen – du redesigner hele boksen!"</p> -->
+                  </div>
+
+                  <button class="lightBtn mt-3 mt-lg-4">Prøv igen 
+                    <svg fill="#000000" height="1rem" width="1rem" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 489.698 489.698" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M468.999,227.774c-11.4,0-20.8,8.3-20.8,19.8c-1,74.9-44.2,142.6-110.3,178.9c-99.6,54.7-216,5.6-260.6-61l62.9,13.1 c10.4,2.1,21.8-4.2,23.9-15.6c2.1-10.4-4.2-21.8-15.6-23.9l-123.7-26c-7.2-1.7-26.1,3.5-23.9,22.9l15.6,124.8 c1,10.4,9.4,17.7,19.8,17.7c15.5,0,21.8-11.4,20.8-22.9l-7.3-60.9c101.1,121.3,229.4,104.4,306.8,69.3 c80.1-42.7,131.1-124.8,132.1-215.4C488.799,237.174,480.399,227.774,468.999,227.774z"></path> <path d="M20.599,261.874c11.4,0,20.8-8.3,20.8-19.8c1-74.9,44.2-142.6,110.3-178.9c99.6-54.7,216-5.6,260.6,61l-62.9-13.1 c-10.4-2.1-21.8,4.2-23.9,15.6c-2.1,10.4,4.2,21.8,15.6,23.9l123.8,26c7.2,1.7,26.1-3.5,23.9-22.9l-15.6-124.8 c-1-10.4-9.4-17.7-19.8-17.7c-15.5,0-21.8,11.4-20.8,22.9l7.2,60.9c-101.1-121.2-229.4-104.4-306.8-69.2 c-80.1,42.6-131.1,124.8-132.2,215.3C0.799,252.574,9.199,261.874,20.599,261.874z"></path> </g> </g> </g></svg>
+                  </button>
+                </div>
+            </div>
+            <div class="finalCertificate">
+              <div class="finalSertificateInner">
+                <h2 class="resultTitle">Den Visionære</h2>
+                <p class="resultSummary">Du er en fremadskuende tænker, der altid ser muligheder, før andre gør det. Din kreativitet driver innovation!</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="percentage-table-container">
+      <h3>Personlighedstræk Fordeling</h3>
+      <table class="percentage-table">
+        <tbody id="percentageTableBody">
+          <!-- Table rows will be added dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footerData">
+          <h6 class="footerEmail">Kontakt os: <a href="mailto: kontact@flextemp.dk">kontact@flextemp.dk</a></h6>
+          <p class="footerPara">Kontakt os, hvis der opstår en fejl, eller hvis du har nogen feedback.</p>
+        </div>
+      </div>
+    </footer>
+
+    
+    <!-- Bootstrap js -->
+    <script src="./assets/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="./assets/js/all.min.js"></script>
+    <script src="./assets/js/fontawesome.min.js"></script>
+
+    <!-- custom js -->
+     <script src="./assets/js/script.js"></script>
+
+     <script>
+   
+      const lightBtn = document.querySelector(".lightBtn");
+        // Add a click event listener to the button
+        lightBtn.addEventListener("click", () => {
+          // Clear any stored quiz data (if applicable)
+          localStorage.removeItem("quizResult"); // Example: Clear the quiz result from localStorage
+
+          // Reload the page to reset the quiz
+          window.location.href = "quiz.html";
+        });
+
+      // Retrieve the quiz result from localStorage
+      const quizResult = JSON.parse(localStorage.getItem("quizResult"));
+
+      // Check if the result exists
+      if (quizResult) {
+        // Update all elements with the class "resultTitle"
+        const resultTitles = document.querySelectorAll(".resultTitle");
+        resultTitles.forEach(title => {
+          title.textContent = quizResult.title || "Ingen titel tilgængelig";
+        });
+
+        // Update all elements with the class "resulttagline"
+        const resulttaglines = document.querySelectorAll(".resulttagline");
+        resulttaglines.forEach(tagline => {
+          tagline.textContent = quizResult.tagline || "Ingen kaldenavn tilgængelig";
+        });
+
+        // Update all elements with the class "resultDescription"
+        const resultDescriptions = document.querySelectorAll(".resultDescription");
+        resultDescriptions.forEach(description => {
+          description.textContent = quizResult.description || "Ingen beskrivelse tilgængelig";
+        });
+
+        // Update all elements with the class "resultStrengths"
+        const resultStrengths = document.querySelectorAll(".resultStrengths");
+        if (quizResult.strengths && Array.isArray(quizResult.strengths)) {
+          resultStrengths.forEach(strengths => {
+            strengths.innerHTML = quizResult.strengths
+              .map(strength => `<li class="tListItem">${strength}</li>`)
+              .join("");
+          });
+        }
+
+        // Update all elements with the class "resultSummary"
+        const resultSummaries = document.querySelectorAll(".resultSummary");
+        resultSummaries.forEach(summary => {
+          summary.textContent = quizResult.summary || "Ingen resumé tilgængelig";
+        });
+
+        // Update the percentage distribution table
+        const tableBody = document.getElementById('percentageTableBody');
+        const percentageDistribution = quizResult.percentage_distribution;
+
+        for (const [trait, percentage] of Object.entries(percentageDistribution)) {
+          const row = document.createElement('tr');
+          
+          // Trait name cell
+          const nameCell = document.createElement('td');
+          nameCell.className = 'trait-name';
+          nameCell.textContent = trait;
+          
+          // Trait bar cell
+          const barCell = document.createElement('td');
+          const traitBar = document.createElement('div');
+          traitBar.className = 'trait-bar';
+          const traitFill = document.createElement('div');
+          traitFill.className = 'trait-fill';
+          traitFill.style.width = percentage + '%';
+          traitBar.appendChild(traitFill);
+          barCell.appendChild(traitBar);
+          
+          // Trait value cell
+          const valueCell = document.createElement('td');
+          valueCell.className = 'trait-value';
+          valueCell.textContent = percentage + '%';
+          
+          // Add cells to row
+          row.appendChild(nameCell);
+          row.appendChild(barCell);
+          row.appendChild(valueCell);
+          
+          // Add row to table
+          tableBody.appendChild(row);
+        }
+      } else {
+        console.error("Ingen quizresultater fundet i localStorage.");
+      }
+     </script>
+
+   
+</body>
+</html>
