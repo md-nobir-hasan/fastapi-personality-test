@@ -1,0 +1,464 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+body{
+    font-family: "Inter", serif;
+  }
+.homeContentMain{
+    width: 100%;
+    max-width: 392px;
+    margin: 3rem auto;
+}
+.mcqContentMain{
+    margin: 3rem auto;
+}
+.homeParent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 10rem);
+    background: #FFFFFF;
+}
+.title{
+    color: #0074D9;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.homeParagraph{
+    color: #334155;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+.homeContentMain .homeForm{
+    margin-top: 2rem;
+}
+.input-group.mobile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: .5rem;
+}
+#countryCode{
+    width: 7.5rem;
+    padding: 0.75rem .41rem;
+    font-size: 0.85rem;
+}
+#mobileInput{
+    width: calc(100% - 8rem);
+}
+.homeForm .input-group{
+    position: relative;
+    margin-bottom: 1rem;
+}
+.homeForm .input-group .placeholder-star{
+    position: absolute;
+    color: red;
+    top: 18%;
+    font-size: 1.1rem;
+}
+.input-group.name .placeholder-star{
+    left: 5.9rem;
+}
+.input-group.mobile .placeholder-star{
+    left: 16.15rem;
+}
+.input-group.email .placeholder-star{
+    left: 3.8rem;
+}
+.homeForm .input-group .homeInput{
+    width: 100%;
+    padding: 0.6rem;
+    border: .1rem solid #94a3b870;
+    outline: none;
+    transition: .3s ease;
+}
+.placeholder-star.hidden {
+    display: none;
+}
+.homeForm .input-group .homeInput:focus{
+    border-color: #0074D9;
+}
+.homeForm .input-group .homeInput:active{
+    border-color: #0074D9;
+}
+ 
+.homeForm .startButton{
+    width: 100%;
+    padding: 0.6rem;
+    border: none;
+    outline: none;
+    transition: .3s ease;
+    background: #0074D9;
+    transition: .3s ease;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.homeForm .startButton:hover{
+    background: #0244bd;
+}
+
+/* MCQ Page */
+.nextButton{
+    background: #0074D9;
+    color: #ffffff;
+    padding: 0.5rem 2rem;
+    border: none;
+    outline: none;
+    transition: .3s ease;
+}
+.nextButton svg{
+    width: .9rem;
+    height: .9rem;
+}
+.nextButton:hover{
+    background: #0244bd;
+}
+.progressText{
+    margin-bottom: 0;
+}
+.progressFull{
+    width: 17rem;
+    margin: .3rem auto;
+    position: relative;
+    background: #e0ecf7;
+    height: .4rem;
+    border-radius: 1rem;
+}
+.progressActive{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0074D9;
+    border-radius: 1rem;
+    width: 2rem;
+    height: 100%;
+}
+.mcqBox{
+    width: 900px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3rem;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .05);
+    border-bottom: .1rem solid rgba(0, 0, 0, .1);
+    margin-top: -3rem;
+}
+.mcqTitle{
+    font-size: 18px;
+    font-weight: 600;
+    color: #334155;
+    line-height: 28px;
+}
+.mcqs{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.mcqSingle{
+    text-align: center;
+    width: 20%;
+}
+
+.mcqs input[type="radio"]{
+    display: none;
+}
+.mcqs .mcqName{
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    background: #A6D6FF; 
+    border: 5px solid #A6D6FF; 
+    border-radius: 50%; 
+    text-align: center;
+    line-height: 3rem; 
+    cursor: pointer; 
+    transition: 0.3s ease;
+}
+
+.mcqs input[type="radio"]:checked + .mcqName{
+    background: #0074D9; 
+    color: white; 
+}
+.progressDiv{
+    margin-bottom: 5rem;
+}
+.mcqs .mcqName:hover{
+    box-shadow: 0 0 5px #0074D9;
+}
+.generateImg{
+    height: 4rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+.progressDiv.generate{
+    margin-bottom: 0;
+}
+
+/* Final page */
+.lightBtn{
+    background: #A6D6FF;
+    border: none;
+    padding: 0.5rem 2rem;
+    transition: .3s ease;
+}
+.lightBtn svg{
+    margin-left: 0.3rem;
+    transition: .3s ease;
+}
+.lightBtn:hover{
+    background: #0074D9;
+    color: #ffffff;
+}
+.lightBtn:hover svg{
+    fill: #ffffff;
+}
+.finalDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 15%;
+}
+.finalDiv .finalText{
+    width: 45%;
+}
+.finalDiv .finalCertificate{
+    width: 40%;
+}
+.finalSertificateInner{
+    width: 100%;
+    max-width: 25rem;
+    background: linear-gradient(-140deg, #A6D6FF, #0074D9, #0244bd);
+    padding: 8rem 3rem;
+    text-align: center;
+    margin: auto;
+    box-shadow: -2px 2px 10px #0074D9;
+}
+.finalSertificateInner h2{
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 5rem;
+    font-family: "Geologica", sans-serif;
+    text-align: center;
+    max-width: 10rem;
+    margin-left: 3rem;
+    margin-right: auto;
+    line-height: 25px;
+}
+.finalSertificateInner p{
+    font-family: "Geologica", sans-serif;
+    color: #ffffff;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.finalTextInner{
+    width: 100%;
+    max-width: 39rem;
+    margin-right: auto;
+    text-align: justify;
+}
+.second_title{
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 28px;
+}
+.third_title{
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 28px;
+}
+.thirdPara, .tListItem{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+}
+.navLogo{
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.LogoAlter{
+    font-size: 1.8rem;
+    color: #0074D9;
+    font-weight: 600;
+    padding: .8rem;
+    display: inline-block;
+    text-decoration: none;
+}
+.footerEmail{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.footerEmail a{
+    text-decoration: none;
+    transition: .3s ease;
+}
+.footerEmail a:hover{
+    text-decoration: underline;
+}
+.footerPara{
+    font-size: 0.7rem;
+}
+.footerData{
+    width: fit-content;
+    margin-left: auto;
+    margin-bottom: 2rem;
+}
+.mcqParagraph{
+    margin-left: 1.5rem;
+}
+.leftBtn svg{
+    width: .9rem;
+    height: .9rem;
+    margin-right: 0.2rem;
+    transition: .3s ease;
+    margin-bottom: 0.2rem;
+}
+.leftBtn{
+    background: #A6D6FF;
+    border: none;
+    outline: none;
+    padding: .5rem 2rem;
+    transition: .3s ease;
+}
+.leftBtn:hover{
+    background: #0074D9;
+    color: #ffffff;
+}
+.leftBtn:hover svg{
+    fill: #ffffff !important;
+}
+.nextDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* deepseec code */
+
+  
+  .leftBtn {
+    display: none; /* Hide by default */
+  }
+  .loadingScreen{
+    display: none;
+    text-align: center;
+  }
+  .progressActiveLoading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #0074d9;
+    animation: progressAnimation 3.5s linear forwards; /* Animation for 3.5 seconds */
+  }
+  
+  @keyframes progressAnimation {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+/* Mobile responsive */
+@media (max-width: 992px) {
+    .mcqBox{
+        width: fit-content;
+        padding: 2rem 1rem;
+    }
+    .mcqpara{
+        white-space: nowrap;
+    }
+    .mcqs{
+        justify-content: space-between;
+    }
+    .mcqBox.generate{
+        width: 700px;
+    }
+    .finalDiv{
+        flex-direction: column-reverse;
+        row-gap: 3rem;
+    }
+    .finalDiv .finalText{
+        width: 100%;
+        max-width: 30rem;
+    }
+    .finalDiv .finalCertificate{
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .mcqSingle{
+        width: 33.33%;
+    }
+    .mcqs{
+        justify-content: flex-start;
+        row-gap: 1.5rem;
+    }
+    .mcqBox.generate{
+        width: 500px;
+    }
+}
+@media (max-width: 576px) {
+    .progressDiv{
+        margin-bottom: 2.5rem;
+    }
+    .mcqContentMain, .homeContentMain{
+        margin: 2.2rem auto;
+    }
+    .finalDiv{
+        row-gap: 2rem;
+    }
+    .footerEmail{
+        font-size: 1.2rem;
+    }
+    .footerPara{
+        font-size: 0.65rem;
+    }
+    .mcqBox.generate{
+        width: fit-content;
+        padding: 2rem 4rem;
+    }
+}
+@media (max-width: 480px) {
+    .mcqSingle{
+        width: 50%;
+    }
+    .mcqParagraph{
+        margin-left: unset;
+    }
+    .mcqBox.generate{
+        padding: 2rem;
+    }
+}
+@media (max-width: 414px) {
+    .mcqBox.generate{
+        padding: 2rem 1rem;
+    }
+    .finalSertificateInner{
+        padding: 5rem 2rem;
+    }
+    .finalSertificateInner h2{
+        margin-left: auto;
+    }
+}
+@media (max-width: 369px) {
+    .finalSertificateInner{
+        padding: 2rem 1rem;
+    }
+}
