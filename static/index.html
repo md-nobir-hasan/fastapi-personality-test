@@ -11,16 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
 
     <!-- Custom css -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
 </head>
 <body>
     
   <nav class="topNav">
     <div class="navLogo">
-      <a href="index.html" class="LogoAlter">FlexTemp</a>
+      <a href="/static/index.html" class="LogoAlter">FlexTemp</a>
     </div>
   </nav>
 
@@ -94,10 +94,10 @@
 
     
     <!-- Bootstrap js -->
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
 
     <!-- custom js -->
-     <script src="./assets/js/script.js"></script>
+     <script src="/static/assets/js/script.js"></script>
 
      <script>
 
@@ -162,7 +162,7 @@
         localStorage.setItem('mcqUser', JSON.stringify(userData));
 
         // Redirect to MCQ page
-        window.location.href = 'quiz.html';
+        window.location.href = '/static/quiz.html';
     }
 });
 

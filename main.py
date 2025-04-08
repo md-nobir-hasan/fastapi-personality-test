@@ -156,13 +156,15 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
+# Mount other static files (CSS, JS)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Serve index.html at "/"
 @app.get("/")
 async def read_index():
     return FileResponse("static/index.html")
 
-# Mount other static files (CSS, JS)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 
 @app.post('/result',status_code=200)
