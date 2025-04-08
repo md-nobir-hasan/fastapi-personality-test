@@ -1,0 +1,44 @@
+MBTI Test Results
+=================
+
+
+Personal Details:
+Name: string
+Email: string
+Phone: string
+
+
+Questions and Answers:
+1. Question: string
+   Answer: string
+   Trait: E
+
+
+MBTI Results:
+MBTI Type: ENFP
+Title: Kampagneleder
+Tagline: Den entusiastiske og kreative inspirator
+Summary: Ifølge FlexTemps personlighedstest, er du: ENFP
+Description: ENFP'er er kendt for deres entusiasme, kreativitet og evne til at inspirere andre. De er ofte energiske og har en stærk intuition, der hjælper dem med at se muligheder, hvor andre måske ikke gør det. De er empatiske og værdsætter dybe, meningsfulde forbindelser med andre mennesker.
+
+Percentage Distribution:
+Extraversion: 70%
+Introversion: 30%
+Sensing: 40%
+Intuition: 60%
+Thinking: 45%
+Feeling: 55%
+Judging: 35%
+Perceiving: 65%
+
+Strengths:
+- Kreativ og innovativ
+- Empatisk og forstående
+- Fleksibel og tilpasningsdygtig
+- Inspirerende og motiverende
+
+Weaknesses:
+- Kan være overdrevent optimistisk
+- Har tendens til at undgå rutineopgaver
+- Kan være for impulsiv
+- Kan have svært ved at afslutte projekter

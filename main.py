@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware  # Import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Literal
@@ -145,8 +146,6 @@ def generate_documents_from_responses(questions):
 # Define FastAPI app
 app = FastAPI()
 
-# Mount static files (HTML, CSS, JS)
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 # Add CORS middleware
 app.add_middleware(
@@ -157,6 +156,13 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
+# Serve index.html at "/"
+@app.get("/")
+async def read_index():
+    return FileResponse("static/index.html")
+
+# Mount other static files (CSS, JS)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.post('/result',status_code=200)
