@@ -1,0 +1,12 @@
+# Automatically normalize text files to use LF
+* text=auto
+
+# Force LF endings for shell and config files
+*.sh text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.php text eol=lf
+
+# Optional: CRLF for Windows-specific files
+*.bat text eol=crlf
