@@ -302,7 +302,7 @@ function showResults() {
   console.log("loadingScreen");
 
   //here I want to add fetching a api request in post method with the answers
-  fetch("http://69.62.115.82:8000/result", {
+  fetch("https://flextemp-personalitytest.dk/result", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
