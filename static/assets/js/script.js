@@ -314,7 +314,7 @@ function showResults() {
       console.log(data);
       localStorage.setItem("quizAnswers", JSON.stringify(answers));
       localStorage.setItem("quizResult", JSON.stringify(data));
-      window.location.href = "/final.html";
+      window.location.href = "/static/final.html";
     })
     .catch(error => console.error('Error:', error));
   console.log('Fetch function working')
