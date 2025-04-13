@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +11,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 
     <!-- Custom css -->
-    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    
+  <div class="resetAndSelect">
+    <div id="google_translate_element"></div>
+  <button class="translateReset" onclick="resetTranslation()">Reset</button>
+  </div>
   <nav class="topNav">
     <div class="navLogo">
-      <a href="/static/index.html" class="LogoAlter">FlexTemp</a>
+      
+      <a href="index.html" class="LogoAlter">FlexTemp</a>
     </div>
+    
   </nav>
-
+    <div class="introduction">
+      <p class="introData">Vores personlighedstest hjælper dig med at få indsigt i dine naturlige og tillærte adfærdsmønstre, præferencer, styrker og områder, hvor du kan udvikle dig. Testen er baseret på psykiateren Carl Jungs teori om 16 forskellige personlighedstyper, som giver dig et unikt billede af, hvordan du tænker, føler og handler i forskellige situationer.
+        Det tager kun 5-10 minutter at gennemføre testen, og du vil få et klart billede af din personlighedstype, som kan hjælpe dig med at forstå dig selv bedre og optimere dine beslutninger i både personlige og professionelle sammenhænge.
+        God fornøjelse.</p>
+    </div>
     <div class="home container homeParent">
       <div class="homeContentMain text-center">
         <h1 class='title'>Hej der !</h1>
@@ -59,7 +68,7 @@
               placeholder='Telefonnummer'
               required
             />
-            <span id="mobileStar" class="placeholder-star">*</span>
+            <span id="mobileStar" class="placeholder-star telephon">*</span>
             <span id="mobileError" style="color: red;"></span>
           </div>
         
@@ -94,10 +103,10 @@
 
     
     <!-- Bootstrap js -->
-    <script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
 
     <!-- custom js -->
-     <script src="/static/assets/js/script.js"></script>
+     <script src="./assets/js/script.js"></script>
 
      <script>
 
@@ -162,13 +171,13 @@
         localStorage.setItem('mcqUser', JSON.stringify(userData));
 
         // Redirect to MCQ page
-        window.location.href = '/static/quiz.html';
+        window.location.href = 'quiz.html';
     }
 });
 
 
   // Country code
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     let countries = [
           { "country": "Afghanistan", "code": "+93" },
           { "country": "Albania", "code": "+355" },
@@ -376,7 +385,42 @@ document.addEventListener("DOMContentLoaded", function () {
           // .catch(error => console.error('Error fetching country data:', error));
   });
 
+  function updatePlaceholderStars() {
+  const inputs = document.querySelectorAll(".homeInput");
+
+  inputs.forEach((input) => {
+    const star = input.parentElement.querySelector(".placeholder-star");
+
+    if (star) {
+      const tempSpan = document.createElement("span");
+      tempSpan.style.visibility = "hidden";
+      tempSpan.style.position = "absolute";
+      tempSpan.style.fontSize = getComputedStyle(input).fontSize;
+      tempSpan.style.fontFamily = getComputedStyle(input).fontFamily;
+      tempSpan.innerText = input.placeholder;
+
+      document.body.appendChild(tempSpan);
+      const placeholderWidth = tempSpan.offsetWidth;
+      document.body.removeChild(tempSpan);
+
+      star.style.position = "absolute";
+      star.style.left = `${placeholderWidth + 12}px`;
+      if(star.classList.contains("telephon")){
+        star.style.left = `${placeholderWidth + 142}px`;
+      }
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updatePlaceholderStars();
+
+  // Optional: Run every 1 second to detect translation changes
+  setInterval(updatePlaceholderStars, 1000);
+});
+
   </script>
-  
+  <script type="text/javascript" src="assets/js/script.js"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

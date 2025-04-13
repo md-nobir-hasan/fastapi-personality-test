@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personality Test</title>
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 
     <!-- Font Awsome -->
-    <link rel="stylesheet" href="/static/assets/css/all.min.css">
-    <link rel="stylesheet" href="/static/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- Custom css -->
-    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
     <style>
     .percentage-distribution {
@@ -118,10 +118,13 @@
     </style>
 </head>
 <body>
-    
+  <div class="resetAndSelect">
+    <div id="google_translate_element"></div>
+  <button class="translateReset" onclick="resetTranslation()">Reset</button>
+  </div>
     <nav class="topNav">
       <div class="navLogo">
-        <a href="/static/index.html" class="LogoAlter">FlexTemp</a>
+        <a href="index.html" class="LogoAlter">FlexTemp</a>
       </div>
     </nav>
 
@@ -180,14 +183,14 @@
 
     
     <!-- Bootstrap js -->
-    <script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap js -->
-    <script src="/static/assets/js/all.min.js"></script>
-    <script src="/static/assets/js/fontawesome.min.js"></script>
+    <script src="./assets/js/all.min.js"></script>
+    <script src="./assets/js/fontawesome.min.js"></script>
 
     <!-- custom js -->
-     <script src="/static/assets/js/script.js"></script>
+     <script src="./assets/js/script.js"></script>
 
      <script>
    
@@ -198,7 +201,7 @@
           localStorage.removeItem("quizResult"); // Example: Clear the quiz result from localStorage
 
           // Reload the page to reset the quiz
-          window.location.href = "/static/quiz.html";
+          window.location.href = "quiz.html";
         });
 
       // Retrieve the quiz result from localStorage
@@ -279,7 +282,8 @@
         console.error("Ingen quizresultater fundet i localStorage.");
       }
      </script>
-
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
    
 </body>
 </html>
