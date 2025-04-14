@@ -8,7 +8,7 @@ body{
 .homeContentMain{
     width: 100%;
     max-width: 392px;
-    margin: 3rem auto;
+    
 }
 .mcqContentMain{
     margin: 3rem auto;
@@ -17,13 +17,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 10rem);
+    min-height: calc(100vh - 16rem);
     background: #FFFFFF;
 }
 .title{
     color: #0074D9;
     font-size: 2.2rem;
     font-weight: 600;
+    margin-bottom: 1.5rem;
 }
 .homeParagraph{
     color: #334155;
@@ -31,9 +32,7 @@ body{
     font-weight: 400;
     line-height: 1.5rem;
 }
-.homeContentMain .homeForm{
-    margin-top: 2rem;
-}
+
 .input-group.mobile{
     display: flex;
     justify-content: space-between;
@@ -414,7 +413,7 @@ body{
 }
 .introduction{
     max-width: 90vw;
-    margin: 2.5rem auto -3rem auto;
+    margin: 2.5rem auto -2.5rem auto;
 }
 .introData{
     color: #334155;
@@ -552,5 +551,14 @@ div#goog-gt-tt {
 @media (max-width: 369px) {
     .finalSertificateInner{
         padding: 2rem 1rem;
+    }
+}
+@media (max-height: 600px) {
+    .homeParent{
+        min-height: unset;
+        margin: 2.5rem auto;
+    }
+    .introduction{
+        margin-bottom: 2rem;
     }
 }
