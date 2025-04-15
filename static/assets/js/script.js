@@ -54,7 +54,7 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "6. Kan du lide at diskutere symbolske eller metaforiske fortolkninger af en historie?",
+    title: "6. Synes du, det er spændende at finde budskaber eller symbolik bag en historie?",
     "trait": "N",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
@@ -102,7 +102,7 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "14. Til fester, starter du samtaler med nye mennesker?",
+    title: "14.	Finder du det naturligt at starte samtaler med andre mennesker i sociale sammenhænge? ",
     "trait": "E",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
@@ -156,13 +156,13 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "23. Stoler du ofte på objektive kriterier for at vurdere situationer?",
+    title: "23.	Lægger du vægt på objektive kriterier, når du vurderer en situation? ",
     "trait": "T",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "24. Fokuserer du mere på detaljer og fakta i dine omgivelser?",
+    title: "24.	Lægger du mere mærke til små detaljer og fakta omkring dig? ",
     "trait": "S",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
@@ -355,6 +355,7 @@ function resetTranslation() {
 }
 
 function resetTranslation() {
+
   // Clear the translate cookie (which stores language preference)
   document.cookie = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC';
   document.cookie = 'googtrans=;path=/;domain=' + window.location.hostname + ';expires=Thu, 01 Jan 1970 00:00:00 UTC';
@@ -362,6 +363,7 @@ function resetTranslation() {
   // Force reload without translation
   window.location.reload();
 }
+
 
 
 
