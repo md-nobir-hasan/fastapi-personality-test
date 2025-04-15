@@ -54,7 +54,7 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "6.	Synes du, det er spændende at finde budskaber eller symbolik bag en historie?",
+    title: "6. Synes du, det er spændende at finde budskaber eller symbolik bag en historie?",
     "trait": "N",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
