@@ -30,7 +30,7 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "2.	Foretrækker du at tilbringe weekender stille hjemme fremfor at gå ud?",
+    title: "2. Foretrækker du at tilbringe weekender hjemme fremfor at gå ud?",
     "trait": "I",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
@@ -60,13 +60,13 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "7.	Stræber du efter at opretholde harmoni i gruppeindstillinger, selvom det betyder kompromiser? ",
+    title: "7. Stræber du efter at opretholde harmoni i grupper, selvom det betyder kompromiser?",
     "trait": "F",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "8.	Når en ven er ked af det, er dit første instinkt at tilbyde følelsesmæssig støtte fremfor løsninger? ",
+    title: "8.	Når en ven er ked af det, er dit første instinkt at tilbyde følelsesmæssig støtte fremfor løsninger?",
     "trait": "F",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
@@ -120,7 +120,7 @@ const questions = [
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
   },
   {
-    title: "17.	Finder du ofte det at være alene mere forfriskende end sociale sammenkomster? ",
+    title: "17.	Finder du ofte det at være alene mere forfriskende end sociale sammenkomster?",
     "trait": "I",
     description: "Enhver beskrivelse relateret til spørgsmålene.",
     options: ["Helt enig", "Delvist enig", "Neutral / Usikker", "Delvist uenig", "Helt uenig"],
