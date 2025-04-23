@@ -249,7 +249,7 @@ def upload_to_drive(filename):
             service_account_file, scopes=SCOPES)
         drive_service = build('drive', 'v3', credentials=credentials)
         
-        # Get or create the "personality-test" folder
+        # Get or create the "Personlighedstest resultater" folder
         folder_name = "Personlighedstest resultater"
         folder_id = get_or_create_folder(drive_service, folder_name)
         
@@ -375,8 +375,8 @@ def upload_to_drive_sync(filename):
             service_account_file, scopes=SCOPES)
         drive_service = build('drive', 'v3', credentials=credentials)
         
-        # Get or create the "personality-test" folder
-        folder_name = "personality-test"
+        # Get or create the "Personlighedstest resultater" folder
+        folder_name = "Personlighedstest resultater"
         folder_id = get_or_create_folder(drive_service, folder_name)
         
         # Define file metadata with the folder ID
