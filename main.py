@@ -250,7 +250,7 @@ def upload_to_drive(filename):
         drive_service = build('drive', 'v3', credentials=credentials)
         
         # Get or create the "personality-test" folder
-        folder_name = "personality-test"
+        folder_name = "Personlighedstest resultater"
         folder_id = get_or_create_folder(drive_service, folder_name)
         
         # Define file metadata with the folder ID
